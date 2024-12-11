@@ -1,10 +1,14 @@
+"use client"
+
 import {
   BookOpenTextIcon,
   HomeIcon,
   LucideIcon,
   SettingsIcon,
+  CalendarIcon,
+  AwardIcon,
+  UsersIcon,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -24,9 +28,24 @@ const links: SidebarLink[] = [
     label: "Home",
   },
   {
+    icon: UsersIcon,
+    href: "/members",
+    label: "Members",
+  },
+  {
     icon: BookOpenTextIcon,
     href: "/training",
     label: "Training",
+  },
+  {
+    icon: CalendarIcon,
+    href: "/events",
+    label: "Events",
+  },
+  {
+    icon: AwardIcon,
+    href: "/exams",
+    label: "Exams",
   },
   {
     icon: SettingsIcon,
@@ -43,22 +62,8 @@ export function Sidebar({ className }: SidebarProps) {
   const pathname = usePathname();
 
   return (
-    <aside
-      className={cn(
-        "sticky top-0 hidden h-screen w-16 flex-col md:flex",
-        className
-      )}
-    >
+    <aside className={cn("sticky top-0 hidden h-screen w-16 flex-col md:flex", className)}>
       <div className="flex grow flex-col items-center gap-y-4 border-r border-border/40 bg-background px-3 py-4">
-        <Link href="/">
-          <Image
-            src="/logo.png"
-            alt="SAAHSP Logo"
-            width={45}
-            height={45}
-            className="h-auto w-auto"
-          />
-        </Link>
         {links.map((link) => (
           <Link
             key={link.href}
@@ -68,7 +73,7 @@ export function Sidebar({ className }: SidebarProps) {
               link.disabled && "cursor-not-allowed opacity-80",
               pathname === link.href
                 ? "bg-accent text-foreground"
-                : "text-foreground/70"
+                : "text-foreground/70",
             )}
             onClick={(e) => link.disabled && e.preventDefault()}
           >
@@ -79,4 +84,4 @@ export function Sidebar({ className }: SidebarProps) {
       </div>
     </aside>
   );
-} 
+}

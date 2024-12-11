@@ -1,7 +1,6 @@
 "use client"
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useSidebar } from './ui/sidebar'
 import { Users, BookOpen, Calendar, Award, Settings } from 'lucide-react'
 
@@ -13,15 +12,8 @@ export function AppSidebar() {
       isOpen ? 'translate-x-0' : '-translate-x-full'
     } w-64 bg-white border-r border-gray-200`}>
       <div className="h-full px-3 py-4 overflow-y-auto">
-        <div className="mb-5 flex justify-center">
-          <Image
-            src="/logo.png"
-            alt="SAAHSP Logo"
-            width={150}
-            height={60}
-            priority
-            className="object-contain"
-          />
+        <div className="mb-5">
+          <span className="text-2xl font-semibold">SAAHSP</span>
         </div>
         <ul className="space-y-2 font-medium">
           <li>

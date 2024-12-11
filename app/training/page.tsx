@@ -1,14 +1,24 @@
 "use client"
 
 import { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "../components/ui/card"
-import { Button } from "../components/ui/button"
-import { Input } from "../components/ui/input"
-import { Label } from "../components/ui/label"
-import { Badge } from "../components/ui/badge"
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../components/ui/dialog"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Badge } from "@/components/ui/badge"
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 
-const courses = [
+interface Course {
+  id: number
+  title: string
+  description: string
+  duration: string
+  price: number
+  startDate: string
+  spots: number
+}
+
+const courses: Course[] = [
   {
     id: 1,
     title: "Advanced Skincare Techniques",
@@ -48,12 +58,13 @@ const courses = [
 ]
 
 export default function TrainingPage() {
-  const [selectedCourse, setSelectedCourse] = useState(null)
+  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null)
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-bold text-pink-800">Training Registration</h1>
-      
+    <div className="container mx-auto py-10">
+      <h1 className="text-3xl font-bold mb-6">Training</h1>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {courses.map((course) => (
           <Card key={course.id} className="bg-white border-pink-200">
@@ -73,42 +84,47 @@ export default function TrainingPage() {
               </div>
             </CardContent>
             <CardFooter>
-              <Dialog>
-                <DialogTrigger asChild>
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger>
                   <Button 
                     className="w-full bg-pink-500 hover:bg-pink-600 text-white"
-                    onClick={() => setSelectedCourse(course)}
+                    onClick={() => {
+                      setSelectedCourse(course)
+                      setIsDialogOpen(true)
+                    }}
                   >
                     Register
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="bg-white">
-                  <DialogHeader>
-                    <DialogTitle className="text-pink-800">Register for {selectedCourse?.title}</DialogTitle>
-                    <DialogDescription className="text-pink-600">
-                      Please fill in your details to register for this course.
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="grid gap-4 py-4">
-                    <div className="grid grid-cols-4 items-center gap-4">
-                      <Label htmlFor="name" className="text-right text-pink-700">
-                        Name
-                      </Label>
-                      <Input id="name" className="col-span-3 border-pink-200" />
+                {selectedCourse && (
+                  <DialogContent className="bg-white">
+                    <DialogHeader>
+                      <DialogTitle className="text-pink-800">Register for {selectedCourse.title}</DialogTitle>
+                      <DialogDescription className="text-pink-600">
+                        Please fill in your details to register for this course.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="grid gap-4 py-4">
+                      <div className="grid grid-cols-4 items-center gap-4">
+                        <Label htmlFor="name" className="text-right text-pink-700">
+                          Name
+                        </Label>
+                        <Input id="name" className="col-span-3 border-pink-200" />
+                      </div>
+                      <div className="grid grid-cols-4 items-center gap-4">
+                        <Label htmlFor="email" className="text-right text-pink-700">
+                          Email
+                        </Label>
+                        <Input id="email" type="email" className="col-span-3 border-pink-200" />
+                      </div>
                     </div>
-                    <div className="grid grid-cols-4 items-center gap-4">
-                      <Label htmlFor="email" className="text-right text-pink-700">
-                        Email
-                      </Label>
-                      <Input id="email" type="email" className="col-span-3 border-pink-200" />
-                    </div>
-                  </div>
-                  <DialogFooter>
-                    <Button type="submit" className="bg-pink-500 hover:bg-pink-600 text-white">
-                      Confirm Registration
-                    </Button>
-                  </DialogFooter>
-                </DialogContent>
+                    <DialogFooter>
+                      <Button type="submit" className="bg-pink-500 hover:bg-pink-600 text-white">
+                        Confirm Registration
+                      </Button>
+                    </DialogFooter>
+                  </DialogContent>
+                )}
               </Dialog>
             </CardFooter>
           </Card>
