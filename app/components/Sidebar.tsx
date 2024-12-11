@@ -62,7 +62,12 @@ export function Sidebar({ className }: SidebarProps) {
   const pathname = usePathname();
 
   return (
-    <aside className={cn("sticky top-0 hidden h-screen w-16 flex-col md:flex", className)}>
+    <aside
+      className={cn(
+        "sticky top-0 hidden h-screen w-16 flex-col md:flex",
+        className
+      )}
+    >
       <div className="flex grow flex-col items-center gap-y-4 border-r border-border/40 bg-background px-3 py-4">
         {links.map((link) => (
           <Link
@@ -73,7 +78,7 @@ export function Sidebar({ className }: SidebarProps) {
               link.disabled && "cursor-not-allowed opacity-80",
               pathname === link.href
                 ? "bg-accent text-foreground"
-                : "text-foreground/70",
+                : "text-foreground/70"
             )}
             onClick={(e) => link.disabled && e.preventDefault()}
           >

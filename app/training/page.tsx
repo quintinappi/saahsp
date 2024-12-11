@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { PageHeader } from "@/components/PageHeader"
 
 interface Course {
   id: number
@@ -63,6 +64,7 @@ export default function TrainingPage() {
 
   return (
     <div className="container mx-auto py-10">
+      <PageHeader title="Training Courses" />
       <h1 className="text-3xl font-bold mb-6">Training</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

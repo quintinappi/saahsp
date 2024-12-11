@@ -2,6 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Calendar } from "@/components/ui/calendar"
+import { PageHeader } from "@/components/PageHeader"
 import { useState } from "react"
 
 interface Event {
@@ -40,38 +41,39 @@ export default function EventsPage() {
   const [date, setDate] = useState<Date | undefined>(new Date())
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-bold text-pink-800">Events Calendar</h1>
-      
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="bg-white border-pink-200">
-          <CardHeader>
-            <CardTitle className="text-xl font-bold text-pink-800">Calendar</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              className="rounded-md border border-pink-200"
-            />
-          </CardContent>
-        </Card>
+    <div className="container mx-auto py-10">
+      <PageHeader title="Events Calendar" />
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <Card className="bg-white border-pink-200">
+            <CardHeader>
+              <CardTitle className="text-xl font-bold text-pink-800">Calendar</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Calendar
+                mode="single"
+                selected={date}
+                onSelect={setDate}
+                className="rounded-md border border-pink-200"
+              />
+            </CardContent>
+          </Card>
 
-        <div className="space-y-4">
-          {events.map((event) => (
-            <Card key={event.id} className="bg-white border-pink-200">
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-pink-700">{event.title}</CardTitle>
-                <CardDescription className="text-pink-600">
-                  {event.date} | {event.location}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-pink-700">{event.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+          <div className="space-y-4">
+            {events.map((event) => (
+              <Card key={event.id} className="bg-white border-pink-200">
+                <CardHeader>
+                  <CardTitle className="text-xl font-bold text-pink-700">{event.title}</CardTitle>
+                  <CardDescription className="text-pink-600">
+                    {event.date} | {event.location}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-pink-700">{event.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </div>
