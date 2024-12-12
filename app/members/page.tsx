@@ -2,8 +2,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Pie, PieChart, ResponsiveContainer, Cell } from "recharts"
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+import { Pie, PieChart, ResponsiveContainer, Cell, Tooltip } from "recharts"
+import { ChartContainer } from "@/components/ui/chart"
 import { PageHeader } from "../components/PageHeader"
 
 const members = [
@@ -58,15 +58,7 @@ export default function MembersPage() {
               <CardTitle className="text-xl font-bold text-pink-800">Member Status</CardTitle>
             </CardHeader>
             <CardContent>
-              <ChartContainer
-                config={{
-                  status: {
-                    label: "Status",
-                    color: "hsl(var(--chart-3))",
-                  },
-                }}
-                className="h-[300px]"
-              >
+              <ChartContainer className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
@@ -82,7 +74,13 @@ export default function MembersPage() {
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                       ))}
                     </Pie>
-                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Tooltip 
+                      contentStyle={{ 
+                        background: "#fff",
+                        border: "1px solid #FDA4AF",
+                        borderRadius: "8px"
+                      }}
+                    />
                   </PieChart>
                 </ResponsiveContainer>
               </ChartContainer>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="24" height="24" fill="white"/>
+  
+  <!-- QR Code Pattern -->
+  <path d="M3 3H9V9H3V3Z" stroke="#DB2777" stroke-width="1.5"/>
+  <path d="M15 3H21V9H15V3Z" stroke="#DB2777" stroke-width="1.5"/>
+  <path d="M3 15H9V21H3V15Z" stroke="#DB2777" stroke-width="1.5"/>
+  <path d="M4 4H8V8H4V4Z" fill="#DB2777"/>
+  <path d="M16 4H20V8H16V4Z" fill="#DB2777"/>
+  <path d="M4 16H8V20H4V16Z" fill="#DB2777"/>
+  
+  <!-- Additional QR Code Elements -->
+  <path d="M15 15H17V17H15V15Z" fill="#DB2777"/>
+  <path d="M19 15H21V17H19V15Z" fill="#DB2777"/>
+  <path d="M15 19H17V21H15V19Z" fill="#DB2777"/>
+  <path d="M19 19H21V21H19V19Z" fill="#DB2777"/>
+  
+  <!-- Center Pattern -->
+  <path d="M11 3H13V5H11V3Z" fill="#DB2777"/>
+  <path d="M11 7H13V9H11V7Z" fill="#DB2777"/>
+  <path d="M11 11H13V13H11V11Z" fill="#DB2777"/>
+  <path d="M11 15H13V17H11V15Z" fill="#DB2777"/>
+  <path d="M11 19H13V21H11V19Z" fill="#DB2777"/>
+</svg>

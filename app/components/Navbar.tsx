@@ -15,32 +15,32 @@ const navItems = [
   {
     title: "SAAHSP",
     href: "https://www.saahsp.com/",
-    variant: "ghost" as "ghost",
+    variant: "ghost" as const,
   },
   {
     title: "Members",
     href: "https://www.saahsp.com/members",
-    variant: "ghost",
+    variant: "ghost" as const,
   },
   {
     title: "Training",
     href: "https://www.saahsp.com/training",
-    variant: "ghost",
+    variant: "ghost" as const,
   },
   {
     title: "Events",
     href: "https://www.saahsp.com/events",
-    variant: "ghost",
+    variant: "ghost" as const,
   },
   {
     title: "Exams",
     href: "https://www.saahsp.com/exams",
-    variant: "ghost",
+    variant: "ghost" as const,
   },
   {
     title: "Settings",
     href: "/settings",
-    variant: "ghost",
+    variant: "ghost" as const,
   },
 ];
 

@@ -2,9 +2,10 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card"
 import { Users, BookOpen, Calendar, Award } from 'lucide-react'
-import { Bar, BarChart, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "./components/ui/chart"
+import { Bar, BarChart, Line, LineChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from "recharts"
+import { ChartContainer } from "./components/ui/chart"
 import { PageHeader } from "./components/PageHeader"
+import { AnimatedNumber } from "@/components/ui/animated-number"
 
 const membershipData = [
   { month: "Jan", members: 180 },
@@ -28,14 +29,17 @@ export default function Dashboard() {
   return (
     <div className="container mx-auto py-10">
       <PageHeader title="Welcome to SAAHSP Dashboard" />
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
         <Card className="bg-white border-pink-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-pink-600">Total Members</CardTitle>
             <Users className="h-4 w-4 text-pink-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-pink-800">1,234</div>
+            <AnimatedNumber 
+              end={1234} 
+              className="text-4xl font-bold text-pink-800" 
+            />
           </CardContent>
         </Card>
         <Card className="bg-white border-pink-200">
@@ -44,7 +48,10 @@ export default function Dashboard() {
             <BookOpen className="h-4 w-4 text-pink-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-pink-800">5</div>
+            <AnimatedNumber 
+              end={5} 
+              className="text-4xl font-bold text-pink-800" 
+            />
           </CardContent>
         </Card>
         <Card className="bg-white border-pink-200">
@@ -53,7 +60,10 @@ export default function Dashboard() {
             <Calendar className="h-4 w-4 text-pink-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-pink-800">3</div>
+            <AnimatedNumber 
+              end={3} 
+              className="text-4xl font-bold text-pink-800" 
+            />
           </CardContent>
         </Card>
         <Card className="bg-white border-pink-200">
@@ -62,7 +72,10 @@ export default function Dashboard() {
             <Award className="h-4 w-4 text-pink-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-pink-800">789</div>
+            <AnimatedNumber 
+              end={789} 
+              className="text-4xl font-bold text-pink-800" 
+            />
           </CardContent>
         </Card>
       </div>
@@ -73,27 +86,24 @@ export default function Dashboard() {
             <CardTitle className="text-xl font-bold text-pink-800">Membership Growth</CardTitle>
           </CardHeader>
           <CardContent>
-            <ChartContainer
-              config={{
-                members: {
-                  label: "Members",
-                  color: "hsl(var(--chart-1))",
-                },
-              }}
-              className="h-[300px]"
-            >
+            <ChartContainer className="h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={membershipData}>
                   <XAxis dataKey="month" stroke="#FDA4AF" />
                   <YAxis stroke="#FDA4AF" />
-                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Tooltip 
+                    contentStyle={{ 
+                      background: "#fff",
+                      border: "1px solid #FDA4AF",
+                      borderRadius: "8px"
+                    }}
+                  />
                   <Line
                     type="monotone"
                     dataKey="members"
                     stroke="#DB2777"
                     strokeWidth={2}
-                    dot={{ fill: "#DB2777", r: 4 }}
-                    activeDot={{ r: 6 }}
+                    dot={false}
                   />
                 </LineChart>
               </ResponsiveContainer>
@@ -106,20 +116,18 @@ export default function Dashboard() {
             <CardTitle className="text-xl font-bold text-pink-800">Exams Conducted</CardTitle>
           </CardHeader>
           <CardContent>
-            <ChartContainer
-              config={{
-                exams: {
-                  label: "Exams",
-                  color: "hsl(var(--chart-2))",
-                },
-              }}
-              className="h-[300px]"
-            >
+            <ChartContainer className="h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={examsData}>
                   <XAxis dataKey="month" stroke="#FDA4AF" />
                   <YAxis stroke="#FDA4AF" />
-                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Tooltip 
+                    contentStyle={{ 
+                      background: "#fff",
+                      border: "1px solid #FDA4AF",
+                      borderRadius: "8px"
+                    }}
+                  />
                   <Bar dataKey="exams" fill="#DB2777" />
                 </BarChart>
               </ResponsiveContainer>

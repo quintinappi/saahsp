@@ -1,8 +1,10 @@
 {
-  "/settings/page": "app/settings/page.js",
-  "/page": "app/page.js",
-  "/members/page": "app/members/page.js",
-  "/training/page": "app/training/page.js",
+  "/_not-found": "app/_not-found.js",
+  "/booking/page": "app/booking/page.js",
+  "/exams/page": "app/exams/page.js",
   "/events/page": "app/events/page.js",
-  "/exams/page": "app/exams/page.js"
+  "/members/page": "app/members/page.js",
+  "/page": "app/page.js",
+  "/settings/page": "app/settings/page.js",
+  "/training/page": "app/training/page.js"
 }
